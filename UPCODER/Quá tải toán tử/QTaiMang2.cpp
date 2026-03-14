@@ -26,17 +26,17 @@ ostream& operator << (ostream& out, arr t)  // toán tử xuất hong cần tham
     return out;
 }
 
-arr operator + (arr h, arr k)
+arr operator + (arr t, arr h)
 {
     arr res;
-    res.n = max(h.n, k.n);      // ở đây phải khai báo thêm thư viện thuật toán algorithm để dùng hàm max nhe
+    res.n = max(t.n, h.n);      // ở đây phải khai báo thêm thư viện thuật toán algorithm để dùng hàm max nhe
     for(int i=0; i<res.n; ++i)
     {
         res.a[i] = 0;           // Khởi tạo phần tử thứ i = 0 để xún dưới cộng
+        if (i < t.n) 
+            res.a[i] += t.a[i]; // Nếu mảng t còn phần tử thì cộng vào
         if (i < h.n) 
             res.a[i] += h.a[i]; // Nếu mảng h còn phần tử thì cộng vào
-        if (i < k.n) 
-            res.a[i] += k.a[i]; // Nếu mảng k còn phần tử thì cộng vào
     }
     return res;
 }
